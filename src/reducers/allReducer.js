@@ -3,13 +3,12 @@ const initialState = [];
 const LogInData = (state = initialState, action) => {
     switch (action.type) {
         case 'ADD': {
-            console.log('action.type::: ', action.type);
-            break;
+            state.push(action.data)
+            return state;
         }
 
         case 'LIST': {
-            console.log('action.type::: ', action.type);
-            break;
+            return state;
         }
 
         default: return state;
