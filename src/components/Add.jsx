@@ -1,20 +1,19 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { AddData, ListData } from '../action/action'
+import { AddData } from '../action/action'
 
 function Add() {
     const dispatch = useDispatch();
     const abc = useSelector(state => state.LogInData);
-    console.log('abc::: ', abc);
-
     const [data, setData] = useState({ name: "", number: "" });
-
+    const [allData, setAllData] = useState([])
     const handelChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value })
     }
 
     const saveData = () => {
         const save = dispatch(AddData(data));
+        setAllData([...allData, save.data])
     }
 
     return (
@@ -39,7 +38,16 @@ function Add() {
                     </thead>
                     <tbody>
                         {
-
+                            allData.map((ele, index) => (
+                                <tr key={ index }>
+                                    <td>{ index + 1 }</td>
+                                    <td>{ ele.name }</td>
+                                    <td>{ ele.number }</td>
+                                    <td>
+                                        <button>Delete</button>
+                                    </td>
+                                </tr>
+                            ))
                         }
                     </tbody>
                 </table>
