@@ -6,7 +6,6 @@ import Add from './components/Add';
 import List from './components/List';
 
 function App() {
-  // Wow
   return (
     <>
       <BrowserRouter>
